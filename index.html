@@ -3,41 +3,40 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <title>Natalia & Sławek — nasze zdjęcia</title>
-  <meta name="description" content="Wspólna galeria zdjęć. Dodaj swoje zdjęcia i zobacz zdjęcia innych.">
+  <title>Natalia & Sławek — wspólna galeria</title>
+  <meta name="description" content="Wspólna galeria zdjęć z wesela Natalii i Sławka.">
   <style>
-    :root{--glass:rgba(18,18,18,.58);--line:rgba(255,255,255,.22)}
+    :root{--glass:rgba(18,18,18,.62);--line:rgba(255,255,255,.24)}
     *{box-sizing:border-box}
-    body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#fff;
-      min-height:100vh;background:#111}
-    body:before{content:"";position:fixed;inset:0;background:
-      linear-gradient(180deg,rgba(0,0,0,.30),rgba(0,0,0,.68)),
-      url("background.jpg") center/cover no-repeat;z-index:-2}
-    body:after{content:"";position:fixed;inset:0;background:rgba(0,0,0,.12);z-index:-1}
-    .wrap{max-width:1050px;margin:auto;padding:24px 16px 48px}
+    body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#fff;min-height:100vh;background:#111}
+    body:before{content:"";position:fixed;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.28),rgba(0,0,0,.7)),url("background.jpg") center/cover no-repeat;z-index:-2}
+    body:after{content:"";position:fixed;inset:0;background:rgba(0,0,0,.1);z-index:-1}
+    .wrap{max-width:1100px;margin:auto;padding:24px 16px 48px}
     .hero{text-align:center;padding:30px 10px 22px}
     h1{font-size:clamp(34px,8vw,64px);margin:0 0 8px;font-weight:700;letter-spacing:-1px}
-    .sub{font-size:16px;opacity:.9}
-    .card{background:var(--glass);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
-      border:1px solid var(--line);border-radius:24px;padding:18px;box-shadow:0 16px 50px rgba(0,0,0,.28)}
+    .sub{font-size:16px;opacity:.92}
+    .card{background:var(--glass);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid var(--line);border-radius:24px;padding:18px;box-shadow:0 16px 50px rgba(0,0,0,.28)}
     .actions{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
-    button,.filebtn{border:0;border-radius:999px;padding:13px 18px;font-size:16px;font-weight:650;cursor:pointer}
+    button,.filebtn{border:0;border-radius:999px;padding:13px 18px;font-size:16px;font-weight:650;cursor:pointer;display:inline-flex;align-items:center;justify-content:center}
+    button:disabled{opacity:.55;cursor:wait}
     .primary{background:#fff;color:#111}.secondary{background:rgba(255,255,255,.14);color:#fff;border:1px solid var(--line)}
     input[type=file]{display:none}
-    #status{margin:14px 0 0;text-align:center;opacity:.9;min-height:24px}
+    #status{margin:14px 0 0;text-align:center;opacity:.95;min-height:24px}
     .qrbox{display:none;text-align:center;margin-top:18px}
     #qrcode{background:#fff;display:inline-block;padding:12px;border-radius:16px}
-    .hint{font-size:13px;opacity:.75;margin-top:10px}
-    .gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:10px;margin-top:18px}
-    .gallery img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:15px;display:block;background:#222}
-    .empty{text-align:center;opacity:.8;padding:35px 10px}
-    footer{text-align:center;opacity:.7;font-size:12px;margin-top:18px}
+    .hint{font-size:13px;opacity:.8;margin-top:10px;line-height:1.45}
+    .gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:12px;margin-top:18px}
+    .tile{min-width:0;background:rgba(0,0,0,.22);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:8px;overflow:hidden}
+    .tile img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:11px;display:block;background:#222}
+    .tile .filename{font-size:12px;opacity:.8;overflow-wrap:anywhere;margin:7px 2px}
+    .empty{text-align:center;opacity:.85;padding:35px 10px}
+    footer{text-align:center;opacity:.75;font-size:12px;margin-top:18px}
     .ownerbox{margin-top:18px;padding:14px;border:1px solid var(--line);border-radius:18px;background:rgba(0,0,0,.22)}
     .ownerbox h2{font-size:18px;margin:0 0 10px;text-align:center}
     .ownerbox input{display:block;width:100%;margin:8px 0;padding:12px;border-radius:10px;border:1px solid #bbb;font-size:16px}
     .ownerbox .actions{margin-top:8px}
-    .deletebtn{display:block;margin:7px auto 0;background:#8f2525;color:white;padding:9px 12px;font-size:14px}
-    @media(max-width:520px){.wrap{padding:10px 10px 30px}.hero{padding-top:22px}.card{padding:14px}.gallery{grid-template-columns:repeat(2,1fr)}}
+    .deletebtn{width:100%;margin-top:7px;background:#8f2525;color:white;padding:9px 12px;font-size:14px}
+    @media(max-width:520px){.wrap{padding:10px 10px 30px}.hero{padding-top:22px}.card{padding:14px}.gallery{grid-template-columns:repeat(2,minmax(0,1fr))}.gallery{gap:8px}}
   </style>
 </head>
 <body>
@@ -49,143 +48,199 @@
 
     <section class="card">
       <div class="actions">
-        <label class="filebtn primary" for="file">＋ Dodaj zdjęcie</label>
-        <button class="secondary" id="refresh">↻ Odśwież</button>
-        <button class="secondary" id="showqr">▣ Pokaż QR</button>
+        <label class="filebtn primary" for="photo-file">＋ Dodaj zdjęcia</label>
+        <button class="secondary" id="refresh" type="button">↻ Odśwież</button>
+        <button class="secondary" id="showqr" type="button">▣ Pokaż QR</button>
       </div>
-      <input id="file" type="file" accept="image/*" multiple>
-      <div id="status">Ładowanie zdjęć…</div>
+      <input id="photo-file" type="file" accept="image/*" multiple>
+      <div class="hint" style="text-align:center">Goście mogą dodawać zdjęcia bez logowania.</div>
+      <div id="status" role="status" aria-live="polite">Ładowanie galerii…</div>
 
       <div class="qrbox" id="qrbox">
         <div id="qrcode"></div>
-        <div class="hint">Zeskanuj ten kod, aby otworzyć tę galerię.</div>
+        <div class="hint">Zeskanuj kod QR, aby otworzyć tę galerię.</div>
       </div>
 
       <div class="gallery" id="gallery"></div>
-      <div class="empty" id="empty" style="display:none">Nie ma jeszcze zdjęć. Dodaj pierwsze 📸</div>
+      <div class="empty" id="empty" style="display:none">Nie ma jeszcze zdjęć. Dodaj pierwsze wspomnienie 💛</div>
+
       <div class="ownerbox">
         <h2>Panel właściciela</h2>
-        <div id="owner-note" class="hint" style="text-align:center">Tylko właściciel może się zalogować i usuwać zdjęcia.</div>
+        <div id="owner-note" class="hint" style="text-align:center">Logowanie jest tylko dla właściciela. Po zalogowaniu pojawią się przyciski usuwania.</div>
         <div id="owner-login">
-          <input id="owner-email" type="email" autocomplete="username" placeholder="E-mail właściciela">
-          <input id="owner-password" type="password" autocomplete="current-password" placeholder="Hasło" >
-          <div class="actions"><button class="secondary" id="owner-signin">Zaloguj właściciela</button></div>
+          <input id="owner-email" type="email" autocomplete="username" placeholder="E-mail właściciela" aria-label="E-mail właściciela">
+          <input id="owner-password" type="password" autocomplete="current-password" placeholder="Hasło" aria-label="Hasło właściciela">
+          <div class="actions"><button class="secondary" id="owner-signin" type="button">Zaloguj właściciela</button></div>
         </div>
-        <div class="actions" id="owner-logout-row" style="display:none"><button class="secondary" id="owner-signout">Wyloguj</button></div>
+        <div class="actions" id="owner-logout-row" style="display:none"><button class="secondary" id="owner-signout" type="button">Wyloguj</button></div>
       </div>
     </section>
-    <footer>Wspólna galeria • zdjęcia są przechowywane w Twoim projekcie Supabase</footer>
+    <footer>Wspólna galeria • Natalia &amp; Sławek • 07.07.2027</footer>
   </main>
 
-  <!-- Replace these two values with your Supabase project values. -->
   <script>
     const SUPABASE_URL = "https://uedyjeuxegrwosclzyjr.supabase.co";
     const SUPABASE_ANON_KEY = "sb_publishable_7g2A0-9QNztdcJxDJeLXyA_utkkSqpu";
     const BUCKET = "photos";
+    const OWNER_UID = "2e61b01a-5754-4f24-b073-f8b241347cb0";
   </script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
   <script>
-    const configured = !SUPABASE_URL.startsWith("WKLEJ_") && !SUPABASE_ANON_KEY.startsWith("WKLEJ_");
-    const sb = configured ? supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
+    const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
     const gallery = document.getElementById("gallery");
     const empty = document.getElementById("empty");
-    const status = document.getElementById("status");
-    const OWNER_UID = "2e61b01a-5754-4f24-b073-f8b241347cb0";
+    const statusEl = document.getElementById("status");
+    const ownerNote = document.getElementById("owner-note");
     let isOwner = false;
+    let loadedSession = false;
 
-    function setStatus(t){ status.textContent=t; }
+    function setStatus(message){ statusEl.textContent = message; }
+    function safeName(name){ return name.replace(/[^a-zA-Z0-9._-]/g, "_"); }
+    function isImage(fileName, metadata){
+      const mime = (metadata && metadata.mimetype) || "";
+      return mime.startsWith("image/") || /\.(jpe?g|png|gif|webp|heic|heif|avif)$/i.test(fileName);
+    }
     function updateOwnerUI(user){
       isOwner = !!user && user.id === OWNER_UID;
       document.getElementById("owner-login").style.display = user ? "none" : "block";
       document.getElementById("owner-logout-row").style.display = user ? "flex" : "none";
-      document.getElementById("owner-note").textContent = isOwner ? "Zalogowano jako właściciel. Możesz usuwać zdjęcia." : (user ? "To konto nie ma uprawnień właściciela." : "Tylko właściciel może się zalogować i usuwać zdjęcia.");
+      if(isOwner) ownerNote.textContent = "Zalogowano jako właściciel. Możesz usuwać zdjęcia.";
+      else if(user) ownerNote.textContent = "Zalogowano na inne konto. To konto nie ma uprawnień właściciela.";
+      else ownerNote.textContent = "Logowanie jest tylko dla właściciela. Po zalogowaniu pojawią się przyciski usuwania.";
     }
-    function escapePath(name){ return name.replace(/[^a-zA-Z0-9._-]/g,"_"); }
+    function formatCount(n){ return `${n} ${n===1?"element":(n<5?"elementy":"elementów")}`; }
 
-    async function loadPhotos(){
-      if(!configured){
-        setStatus("Strona jest gotowa. Najpierw wpisz dane Supabase w kodzie.");
-        empty.style.display="block"; empty.textContent="Skonfiguruj Supabase zgodnie z instrukcją w README.";
+    async function loadGallery(){
+      setStatus("Ładowanie zdjęć…");
+      gallery.innerHTML = "";
+      const {data, error} = await sb.storage.from(BUCKET).list("", {
+        limit: 1000,
+        sortBy: {column:"created_at", order:"desc"}
+      });
+      if(error){
+        setStatus("Nie udało się wczytać galerii. Sprawdź połączenie lub uprawnienia Storage.");
+        empty.style.display = "none";
         return;
       }
-      setStatus("Ładowanie zdjęć…");
-      gallery.innerHTML="";
-      const {data, error} = await sb.storage.from(BUCKET).list("", {limit:1000, sortBy:{column:"created_at",order:"desc"}});
-      if(error){ setStatus("Nie udało się pobrać zdjęć."); return; }
-      const files = (data||[]).filter(x=>x.name);
+      const files = (data || []).filter(f => f && f.name && f.name !== ".emptyFolderPlaceholder")
+        .filter(f => isImage(f.name, f.metadata));
       empty.style.display = files.length ? "none" : "block";
-      for(const f of files){
-        const {data:urlData} = sb.storage.from(BUCKET).getPublicUrl(f.name);
-        if(urlData?.publicUrl){
-          const tile=document.createElement("div");
-          const im=document.createElement("img");
-          im.loading="lazy"; im.alt="Zdjęcie"; im.src=urlData.publicUrl;
-          im.onclick=()=>window.open(urlData.publicUrl,"_blank");
-          tile.appendChild(im);
-          if(isOwner){
-            const del=document.createElement("button");
-            del.className="deletebtn"; del.type="button"; del.textContent="Usuń zdjęcie";
-            del.onclick=async()=>{
-              if(!confirm("Czy na pewno usunąć to zdjęcie? Tej operacji nie można cofnąć.")) return;
-              del.disabled=true; del.textContent="Usuwanie…";
-              const {error:delError}=await sb.storage.from(BUCKET).remove([f.name]);
-              if(delError){alert("Nie udało się usunąć zdjęcia. Sprawdź, czy polityka DELETE w Supabase jest zapisana.");del.disabled=false;del.textContent="Usuń zdjęcie";return;}
-              await loadPhotos();
-            };
-            tile.appendChild(del);
-          }
-          gallery.appendChild(tile);
-        }
-      }
-      setStatus(`${files.length} ${files.length===1?"zdjęcie":(files.length<5?"zdjęcia":"zdjęć")}`);
-    }
 
-    document.getElementById("file").addEventListener("change", async e=>{
-      if(!configured){ setStatus("Najpierw skonfiguruj Supabase."); return; }
-      const files=[...e.target.files]; if(!files.length)return;
-      setStatus("Dodawanie zdjęć…");
-      let ok=0;
       for(const file of files){
-        if(!file.type.startsWith("image/")) continue;
-        const ext=(file.name.split(".").pop()||"jpg").toLowerCase();
-        const path=`${Date.now()}-${crypto.randomUUID()}.${escapePath(ext)}`;
-        const {error}=await sb.storage.from(BUCKET).upload(path,file,{cacheControl:"3600",upsert:false,contentType:file.type});
-        if(!error) ok++;
-      }
-      e.target.value="";
-      setStatus(`Dodano ${ok} ${ok===1?"zdjęcie":"zdjęć"}.`);
-      await loadPhotos();
-    });
+        const {data: publicData} = sb.storage.from(BUCKET).getPublicUrl(file.name);
+        if(!publicData || !publicData.publicUrl) continue;
+        const tile = document.createElement("article");
+        tile.className = "tile";
+        const img = document.createElement("img");
+        img.loading = "lazy";
+        img.alt = "Zdjęcie z galerii";
+        img.src = publicData.publicUrl;
+        img.onclick = () => window.open(publicData.publicUrl, "_blank", "noopener");
+        tile.appendChild(img);
+        const label = document.createElement("div");
+        label.className = "filename";
+        label.textContent = "📷 Zdjęcie";
+        tile.appendChild(label);
 
-    document.getElementById("owner-signin").onclick=async()=>{
-      if(!configured){alert("Brak konfiguracji Supabase.");return;}
-      const email=document.getElementById("owner-email").value.trim();
-      const password=document.getElementById("owner-password").value;
-      if(!email||!password){alert("Wpisz e-mail i hasło konta właściciela.");return;}
-      const {data,error}=await sb.auth.signInWithPassword({email,password});
-      if(error){alert("Logowanie nie powiodło się. Sprawdź e-mail i hasło.");return;}
-      document.getElementById("owner-password").value="";
-      updateOwnerUI(data.user);
-      await loadPhotos();
-    };
-    document.getElementById("owner-signout").onclick=async()=>{
-      await sb.auth.signOut(); updateOwnerUI(null); await loadPhotos();
-    };
-    if(configured){
-      sb.auth.getSession().then(({data})=>{updateOwnerUI(data.session?.user||null);loadPhotos();});
-      sb.auth.onAuthStateChange((_event,session)=>{updateOwnerUI(session?.user||null);});
+        if(isOwner){
+          const del = document.createElement("button");
+          del.className = "deletebtn";
+          del.type = "button";
+          del.textContent = "Usuń zdjęcie";
+          del.onclick = async () => {
+            const itemType = "zdjęcie";
+            if(!confirm(`Czy na pewno usunąć ten ${itemType}? Tej operacji nie można cofnąć.`)) return;
+            del.disabled = true;
+            del.textContent = "Usuwanie…";
+            const {error: deleteError} = await sb.storage.from(BUCKET).remove([file.name]);
+            if(deleteError){
+              alert("Nie udało się usunąć pliku. Sprawdź politykę DELETE w Supabase Storage.");
+              del.disabled = false;
+              del.textContent = "Usuń zdjęcie";
+              return;
+            }
+            await loadGallery();
+          };
+          tile.appendChild(del);
+        }
+        gallery.appendChild(tile);
+      }
+      setStatus(`W galerii: ${formatCount(files.length)}.`);
     }
-    document.getElementById("refresh").onclick=loadPhotos;
-    document.getElementById("showqr").onclick=()=>{
-      const box=document.getElementById("qrbox");
-      box.style.display=box.style.display==="block"?"none":"block";
-      if(box.style.display==="block" && !box.dataset.ready){
-        new QRCode(document.getElementById("qrcode"),{text:location.href,width:220,height:220});
-        box.dataset.ready="1";
+
+    async function uploadPhotos(){
+      const input = document.getElementById("photo-file");
+      const files = [...(input.files || [])];
+      if(!files.length) return;
+      let uploaded = 0, skipped = 0;
+      for(let i=0; i<files.length; i++){
+        const file = files[i];
+        if(!file.type.startsWith("image/")) { skipped++; continue; }
+        setStatus(`Przesyłanie zdjęcia ${i+1} z ${files.length}…`);
+        const ext = safeName((file.name.split(".").pop() || "jpg").toLowerCase());
+        const path = `${Date.now()}-${crypto.randomUUID()}.${ext}`;
+        const {error} = await sb.storage.from(BUCKET).upload(path, file, {
+          cacheControl: "3600",
+          upsert: false,
+          contentType: file.type || "image/jpeg"
+        });
+        if(error){
+          console.error("Upload failed", error);
+          alert(`Nie udało się dodać zdjęcia „${file.name}”. Sprawdź limit rozmiaru lub uprawnienia Storage.`);
+          skipped++;
+        } else uploaded++;
+      }
+      input.value = "";
+      setStatus(`Dodano: ${uploaded}. Pominięto lub nie udało się dodać: ${skipped}.`);
+      await loadGallery();
+    }
+
+    document.getElementById("photo-file").addEventListener("change", uploadPhotos);
+
+    document.getElementById("owner-signin").onclick = async () => {
+      const email = document.getElementById("owner-email").value.trim();
+      const password = document.getElementById("owner-password").value;
+      if(!email || !password){ alert("Wpisz e-mail i hasło konta właściciela."); return; }
+      const button = document.getElementById("owner-signin");
+      button.disabled = true;
+      button.textContent = "Logowanie…";
+      const {data, error} = await sb.auth.signInWithPassword({email, password});
+      button.disabled = false;
+      button.textContent = "Zaloguj właściciela";
+      if(error){ alert("Logowanie nie powiodło się. Sprawdź e-mail i hasło."); return; }
+      document.getElementById("owner-password").value = "";
+      updateOwnerUI(data.user);
+      await loadGallery();
+      if(!isOwner) alert("To konto nie ma uprawnień właściciela.");
+    };
+    document.getElementById("owner-signout").onclick = async () => {
+      await sb.auth.signOut();
+      updateOwnerUI(null);
+      await loadGallery();
+    };
+    document.getElementById("refresh").onclick = loadGallery;
+    document.getElementById("showqr").onclick = () => {
+      const box = document.getElementById("qrbox");
+      box.style.display = box.style.display === "block" ? "none" : "block";
+      if(box.style.display === "block" && !box.dataset.ready){
+        new QRCode(document.getElementById("qrcode"), {text:location.href, width:220, height:220});
+        box.dataset.ready = "1";
       }
     };
-    if(!configured) loadPhotos();
+
+    sb.auth.getSession().then(({data}) => {
+      updateOwnerUI(data.session ? data.session.user : null);
+      loadedSession = true;
+      loadGallery();
+    }).catch(() => {
+      updateOwnerUI(null);
+      loadGallery();
+    });
+    sb.auth.onAuthStateChange((_event, session) => {
+      if(!loadedSession) return;
+      updateOwnerUI(session ? session.user : null);
+    });
   </script>
 </body>
 </html>
