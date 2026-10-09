@@ -6,53 +6,74 @@
   <title>Natalia & Sławek — wspólna galeria</title>
   <meta name="description" content="Wspólna galeria zdjęć z wesela Natalii i Sławka.">
   <style>
-    :root{--glass:rgba(18,18,18,.62);--line:rgba(255,255,255,.24)}
-    *{box-sizing:border-box}
-    body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#fff;min-height:100vh;background:#111}
-    body:before{content:"";position:fixed;inset:0;background:url("background.jpg") center/cover no-repeat;z-index:-2}
-    body:after{content:"";position:fixed;inset:0;background:rgba(255,255,255,.03);z-index:-1}
-    .wrap{max-width:1100px;margin:auto;padding:24px 16px 48px}
-    .hero{text-align:center;padding:30px 10px 22px}
-    h1{font-size:clamp(34px,8vw,64px);margin:0 0 8px;font-weight:700;letter-spacing:-1px}
-    .sub{font-size:16px;opacity:.92}
-    .card{background:var(--glass);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid var(--line);border-radius:24px;padding:18px;box-shadow:0 16px 50px rgba(0,0,0,.28)}
-    .actions{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
-    button,.filebtn{border:0;border-radius:999px;padding:13px 18px;font-size:16px;font-weight:650;cursor:pointer;display:inline-flex;align-items:center;justify-content:center}
-    button:disabled{opacity:.55;cursor:wait}
-    .primary{background:#fff;color:#111}.secondary{background:rgba(255,255,255,.14);color:#fff;border:1px solid var(--line)}
-    input[type=file]{display:none}
-    #status{margin:14px 0 0;text-align:center;opacity:.95;min-height:24px}
-    .qrbox{display:none;text-align:center;margin-top:18px}
-    #qrcode{background:#fff;display:inline-block;padding:12px;border-radius:16px}
-    .hint{font-size:13px;opacity:.8;margin-top:10px;line-height:1.45}
-    .gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:12px;margin-top:18px}
-    .tile{min-width:0;background:rgba(0,0,0,.22);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:8px;overflow:hidden}
-    .tile img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:11px;display:block;background:#222}
-    .tile .filename{font-size:12px;opacity:.8;overflow-wrap:anywhere;margin:7px 2px}
-    .empty{text-align:center;opacity:.85;padding:35px 10px}
-    footer{text-align:center;opacity:.75;font-size:12px;margin-top:18px}
-    .ownerbox{margin-top:18px;padding:14px;border:1px solid var(--line);border-radius:18px;background:rgba(0,0,0,.22)}
-    .ownerbox h2{font-size:18px;margin:0 0 10px;text-align:center}
-    .ownerbox input{display:block;width:100%;margin:8px 0;padding:12px;border-radius:10px;border:1px solid #bbb;font-size:16px}
-    .ownerbox .actions{margin-top:8px}
-    .deletebtn{width:100%;margin-top:7px;background:#8f2525;color:white;padding:9px 12px;font-size:14px}
-    @media(max-width:520px){.wrap{padding:10px 10px 30px}.hero{padding-top:22px}.card{padding:14px}.gallery{grid-template-columns:repeat(2,minmax(0,1fr))}.gallery{gap:8px}}
-  </style>
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#fff;background:#15110d}
+button,.filebtn{border:1px solid rgba(255,255,255,.7);border-radius:999px;padding:15px 22px;font-size:17px;font-weight:650;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;text-decoration:none}
+button:disabled{opacity:.55;cursor:wait}
+.primary{background:#fff;color:#111;border-color:#fff}
+.secondary{background:rgba(255,255,255,.18);color:#fff;border-color:rgba(255,255,255,.7);backdrop-filter:blur(10px)}
+[hidden]{display:none!important}
+input[type=file]{display:none}
+.landing{min-height:100svh;position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;padding:7vh 20px 5vh;background:linear-gradient(180deg,rgba(0,0,0,.12),rgba(0,0,0,.05) 45%,rgba(0,0,0,.26)),url("background.jpg") center center/cover no-repeat}
+.landing h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(38px,9vw,62px);font-weight:400;line-height:1.1;margin:3vh 0 20px;text-shadow:0 2px 14px rgba(0,0,0,.18)}
+.date-line{display:flex;align-items:center;justify-content:center;gap:16px;font-size:clamp(19px,5vw,26px);letter-spacing:1px}
+.date-line:before,.date-line:after{content:"";height:1px;width:22vw;max-width:105px;background:rgba(255,255,255,.85)}
+.heart{font-size:46px;font-weight:300;line-height:1;margin:22px 0}
+.landing-spacer{flex:1;min-height:80px}
+.landing-actions{width:min(100%,460px);display:grid;gap:12px}
+.landing-actions button{width:100%;min-height:62px;font-size:20px}
+.landing .gallery-link{background:rgba(255,255,255,.22);color:#fff;backdrop-filter:blur(9px);-webkit-backdrop-filter:blur(9px)}
+.thanks{font-size:clamp(16px,4.5vw,22px);margin:28px 0 0;text-shadow:0 2px 10px rgba(0,0,0,.35)}
+.gallery-page{min-height:100vh;padding:18px 14px 35px;background:linear-gradient(rgba(15,12,10,.45),rgba(15,12,10,.75)),url("background.jpg") center/cover fixed}
+.gallery-wrap{max-width:1000px;margin:0 auto}
+.gallery-header{text-align:center;font-family:Georgia,"Times New Roman",serif;font-size:32px;margin:8px 0}
+.gallery-date{text-align:center;margin-bottom:18px;opacity:.9}
+.card{background:rgba(18,18,18,.68);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.25);border-radius:24px;padding:18px;box-shadow:0 16px 50px rgba(0,0,0,.28)}
+.actions{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+#status{margin:14px 0 0;text-align:center;opacity:.95;min-height:24px}
+.qrbox{display:none;text-align:center;margin-top:18px}
+#qrcode{background:#fff;display:inline-block;padding:12px;border-radius:16px}
+.hint{font-size:14px;opacity:.88;margin-top:10px;line-height:1.45}
+.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:12px;margin-top:18px}
+.tile{min-width:0;background:rgba(0,0,0,.22);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:8px;overflow:hidden}
+.tile img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:11px;display:block;background:#222}
+.tile .filename{font-size:12px;opacity:.8;overflow-wrap:anywhere;margin:7px 2px}
+.empty{text-align:center;opacity:.85;padding:35px 10px}
+footer{text-align:center;opacity:.8;font-size:12px;margin-top:18px}
+.ownerbox{margin-top:18px;padding:14px;border:1px solid rgba(255,255,255,.25);border-radius:18px;background:rgba(0,0,0,.22)}
+.ownerbox summary{font-size:17px;font-weight:650;text-align:center;cursor:pointer;list-style:none}
+.ownerbox summary::-webkit-details-marker{display:none}
+.ownerbox h2{font-size:18px;margin:12px 0 10px;text-align:center}
+.ownerbox input{display:block;width:100%;margin:8px 0;padding:12px;border-radius:10px;border:1px solid #bbb;font-size:16px}
+.ownerbox .actions{margin-top:8px}
+.deletebtn{width:100%;margin-top:7px;background:#8f2525;color:white;padding:9px 12px;font-size:14px}
+.backbtn{margin:0 auto 14px;display:flex}
+@media(max-width:520px){.landing{padding:5vh 20px 4vh;background-position:center center}.landing h1{margin-top:4vh}.landing-spacer{min-height:100px}.gallery{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.card{padding:14px}}
+</style>
 </head>
 <body>
-  <main class="wrap">
-    <section class="hero">
-      <h1>Natalia &amp; Sławek</h1>
-      <div class="sub">07.07.2027 • wspólna galeria zdjęć</div>
-    </section>
-
+  <section class="landing" id="landing">
+    <h1>Natalia &amp; Sławek</h1>
+    <div class="date-line">07.07.2027</div>
+    <div class="heart">♡</div>
+    <div class="landing-spacer"></div>
+    <div class="landing-actions">
+      <label class="filebtn primary" for="photo-file">＋&nbsp; Dodaj zdjęcia</label>
+      <input id="photo-file" type="file" accept="image/*" multiple>
+      <button class="gallery-link" id="open-gallery" type="button">▧&nbsp; Zobacz galerię</button>
+    </div>
+    <div class="thanks">♥ &nbsp; Dziękujemy, że jesteście z nami &nbsp; ♥</div>
+  </section>
+  <main class="gallery-page" id="gallery-page" hidden>
+    <div class="gallery-wrap">
+      <button class="secondary backbtn" id="back-home" type="button">‹ Wróć</button>
+      <div class="gallery-header">Natalia &amp; Sławek</div>
+      <div class="gallery-date">07.07.2027 · wspólna galeria zdjęć</div>
     <section class="card">
       <div class="actions">
-        <label class="filebtn primary" for="photo-file">＋ Dodaj zdjęcia</label>
         <button class="secondary" id="refresh" type="button">↻ Odśwież</button>
         <button class="secondary" id="showqr" type="button">▣ Pokaż QR</button>
       </div>
-      <input id="photo-file" type="file" accept="image/*" multiple>
       <div class="hint" style="text-align:center">Goście mogą dodawać zdjęcia bez logowania.</div>
       <div id="status" role="status" aria-live="polite">Ładowanie galerii…</div>
 
@@ -64,7 +85,7 @@
       <div class="gallery" id="gallery"></div>
       <div class="empty" id="empty" style="display:none">Nie ma jeszcze zdjęć. Dodaj pierwsze wspomnienie 💛</div>
 
-      <div class="ownerbox" id="ownerbox" style="display:none">
+      <div class="ownerbox">
         <h2>Panel właściciela</h2>
         <div id="owner-note" class="hint" style="text-align:center">Logowanie jest tylko dla właściciela. Po zalogowaniu pojawią się przyciski usuwania.</div>
         <div id="owner-login">
@@ -73,9 +94,10 @@
           <div class="actions"><button class="secondary" id="owner-signin" type="button">Zaloguj właściciela</button></div>
         </div>
         <div class="actions" id="owner-logout-row" style="display:none"><button class="secondary" id="owner-signout" type="button">Wyloguj</button></div>
-      </div>
+      </details>
     </section>
     <footer>Wspólna galeria • Natalia &amp; Sławek • 07.07.2027</footer>
+    </div>
   </main>
 
   <script>
@@ -83,8 +105,6 @@
     const SUPABASE_ANON_KEY = "sb_publishable_7g2A0-9QNztdcJxDJeLXyA_utkkSqpu";
     const BUCKET = "photos";
     const OWNER_UID = "2e61b01a-5754-4f24-b073-f8b241347cb0";
-    const ADMIN_MODE = new URLSearchParams(location.search).get("admin") === "1";
-    if (ADMIN_MODE) document.getElementById("ownerbox").style.display = "block";
   </script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
@@ -105,7 +125,6 @@
     }
     function updateOwnerUI(user){
       isOwner = !!user && user.id === OWNER_UID;
-      document.getElementById("ownerbox").style.display = (ADMIN_MODE || isOwner) ? "block" : "none";
       document.getElementById("owner-login").style.display = user ? "none" : "block";
       document.getElementById("owner-logout-row").style.display = user ? "flex" : "none";
       if(isOwner) ownerNote.textContent = "Zalogowano jako właściciel. Możesz usuwać zdjęcia.";
@@ -172,7 +191,20 @@
       setStatus(`W galerii: ${formatCount(files.length)}.`);
     }
 
+    function showGallery(){
+      document.getElementById("landing").hidden = true;
+      document.getElementById("gallery-page").hidden = false;
+      window.scrollTo(0,0);
+    }
+    document.getElementById("open-gallery").addEventListener("click", showGallery);
+    document.getElementById("back-home").addEventListener("click", () => {
+      document.getElementById("gallery-page").hidden = true;
+      document.getElementById("landing").hidden = false;
+      window.scrollTo(0,0);
+    });
+
     async function uploadPhotos(){
+      showGallery();
       const input = document.getElementById("photo-file");
       const files = [...(input.files || [])];
       if(!files.length) return;
